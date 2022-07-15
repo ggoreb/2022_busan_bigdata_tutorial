@@ -1,0 +1,15 @@
+<table border="1">
+  <tr>
+    <td>순번</td><td>연도</td><td>월</td>
+    <td>종류</td><td>제품명</td>
+  </tr>
+  {% for shop in shops %}
+  <tr>
+    <td>{{ shop.id }}</td>
+    <td>{{ shop.year }}</td>
+    <td>{{ shop.month }}</td>
+    <td>{{ shop.type }}</td>
+    <td>{{ shop.name }}</td>
+  </tr>
+  {% endfor %}
+</table>
