@@ -29,8 +29,25 @@ def show(request):
 
 from .models import ArmyShop
 def army_shop(request):
-  shops = ArmyShop.objects.order_by('-id')
+  prd = request.GET.get('prd')
+  if not prd:
+    prd = ''
+
+  # shops = ArmyShop.objects.order_by('-id')
+  shops = ArmyShop.objects.filter(
+    name__contains=prd).order_by('-id')
   return render(
     request, 'secondapp/army_shop.html',
     { 'shops': shops }
   )
+
+def army_shop_path(request, year, month):
+  shops = ArmyShop.objects.filter(year=year, month=month).order_by('-id')
+  return render(
+    request, 'secondapp/army_shop.html',
+    { 'shops': shops }
+  )
+
+
+
+

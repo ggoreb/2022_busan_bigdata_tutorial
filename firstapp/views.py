@@ -34,3 +34,12 @@ def show(request):
   return render(request, 'firstapp/show.html', {
     'my_data': curriculum, 'age': 30
   })
+
+def date(request, year, month):
+  return HttpResponse('%s - %s' % (year, month))
+
+def search(request):
+  page = request.GET.get('page')
+  title = request.GET.get('title')
+
+  return HttpResponse('%s - %s' % (page, title))
