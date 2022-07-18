@@ -1,0 +1,22 @@
+<body>
+  <h1>제주 올레길 정보</h1>
+  <hr>
+  <table border='1'>
+    <tr>
+      <td>코스별</td>
+      <td>코스명</td>
+      <td>거리(KM)</td>
+      <td>소요시간</td>
+      <td>시작/종점</td>
+    </tr>
+    {% for jeju_olle in jeju_olle_list %}
+    <tr>
+      <td>{{ jeju_olle.course }}</td>
+      <td>{{ jeju_olle.course_name }}</td>
+      <td>{{ jeju_olle.distance }}</td>
+      <td>{{ jeju_olle.time_info }}</td>
+      <td>{{ jeju_olle.start_end_info }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
