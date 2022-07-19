@@ -1,5 +1,13 @@
+{% load static %}
+
+{% comment %} {{  }} {% endcomment %}
+
 <body>
   <h1>Show!!!!</h1>
+  <img src='http://127.0.0.1:8000/static/zoro.jpg'>
+  <img src='/static/zoro.jpg'>
+  <img src='http://ggoreb.com/images/zoro.jpg'>
+  <img src='{% static "zoro.jpg" %}'>
 
   {% for item in my_data %}
     <h3>{{ item.id }} / {{ item.name }}</h3>

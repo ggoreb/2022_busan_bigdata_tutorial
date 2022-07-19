@@ -1,0 +1,9 @@
+<form action="/second/army_shop/add/" 
+      method="post">
+  <input type="text" name="year"><br>
+  <input type="text" name="month"><br>
+  <input type="text" name="type"><br>
+  <input type="text" name="name"><br>
+  {% csrf_token %}
+  <button>추가</button>
+</form>

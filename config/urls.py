@@ -20,6 +20,8 @@ import config.views
 from . import views as h
 
 urlpatterns = [
+  path('', config.views.index),
+
   path('admin/', admin.site.urls),
   path('index1/', views.index1),
   path('index2/', views.index2),

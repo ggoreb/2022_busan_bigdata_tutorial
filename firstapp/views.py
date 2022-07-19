@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
+
 def index1(request):
   return HttpResponse('<u>Hello</u>')
 
@@ -43,3 +44,58 @@ def search(request):
   title = request.GET.get('title')
 
   return HttpResponse('%s - %s' % (page, title))
+
+def req_get(request):
+  a = request.GET.get('a')
+  b = request.GET.get('b')
+  c = request.GET['c']
+  result = '%s %s %s' % (a, b, c)
+  return HttpResponse(result)
+
+def req_post(request):
+  
+  if request.method == 'POST':
+    a = request.POST.get('a')
+    b = request.POST.get('b')
+    c = request.POST['c']
+    result = '%s %s %s' % (a, b, c)
+    return HttpResponse(result)
+
+  return render(request, 'firstapp/post.html')
+
+def template(request):
+  return render(
+    request, 'firstapp/template.html')
+
+from firstapp.forms import NameForm
+
+def basic_form(request):
+  if request.method == 'POST':
+    # 사용자의 요청 데이터 입력 + 유효성 검사
+    form = NameForm(request.POST)  
+  else:
+    form = NameForm()
+
+  return render(
+    request,
+    'firstapp/basic_form.html',
+    { 'form': form }
+  )
+
+from django.shortcuts import redirect
+from .forms import CurriculumForm
+def form_model(request):
+  if request.method == 'POST':
+    form = CurriculumForm(request.POST)
+    if form.is_valid():
+      curriculum = form.save(commit=False)
+      # (필요하다면) 데이터 추가 / 변경
+      curriculum.save()
+
+      return redirect('/first/form/model/')
+  else:
+    form = CurriculumForm()
+  return render(
+    request, 'firstapp/form_model.html',
+    { 'form': form }
+  )

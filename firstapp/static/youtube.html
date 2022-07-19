@@ -1,0 +1,13 @@
+<h1>AJAX</h1>
+
+<script>
+  let json = '';
+
+  const ajax = fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&q=%EC%8A%AC%EA%B8%B0%EB%A1%9C%EC%9A%B4&maxResults=10&key=AIzaSyBcYq5zgED0rgC3aX00om0ThqbRPQ5V020');
+  ajax.then(function(response) {
+    return response.json();
+  }).then(function(result) {
+    console.log(result);
+    json = result;
+  });
+</script>
